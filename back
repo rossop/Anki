@@ -1,0 +1,13 @@
+{{FrontSide}}
+<br>
+<hr id=answer>
+<br>
+<Strong>{{back}}</Strong>
+<br><br>
+{{#bnotes}}
+{{bnotes}}
+{{/bnotes}}
+<br>
+{{#memo}}
+{{memo}}
+{{/memo}}
