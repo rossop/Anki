@@ -1,8 +1,0 @@
-<Strong>{{front}}</Strong>
-{{#pos}}
-<i><sup> {{pos}} </sup></i>
-{{/pos}}
-<br><br>
-{{#tenses}}{{tenses}}{{/tenses}}
-<br>
-{{fnotes}}
