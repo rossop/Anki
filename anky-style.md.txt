@@ -1,0 +1,230 @@
+
+### source: http://blog.shorouk.xyz/2019/11/27/style-anki/
+
+## FRONT TEMPLATE
+<div class ="frontContainerLight">
+<div style=" font-family: myfont ; font-weight:bold">What does this word mean ?</div>
+<div id="imgcontainer"><img src={{picture}}</div>
+<div class="word">{{word}}</div>
+</div>
+
+## STYLING
+.card {
+    font-size: 40px;
+    text-align: center;
+    color: black;
+    background: url("http://blog.shorouk.xyz/wp-content/uploads/2019/11/tbg-1024x576.jpg");
+    width:700px;
+    margin: 0 auto;
+}
+
+/*French word*/
+.word {
+    font-family: Impact;
+    font-size: 60px;
+    color: black;
+}
+
+/*English translation*/
+.translation{
+font-size:20px;
+color:#25272b;
+padding-top:5px;
+}
+
+/*french and english examples*/
+.examples{
+font-size:30px;
+font-family: myfont;
+}
+
+.boldClass {
+    font-weight: bold;
+}
+
+.partOfSpeach{
+   font-size: 12px;
+    font-family: Comic Sans MS;
+    padding: 10px
+    font-weight: bold;
+}
+
+/*Blue background for masculine nouns */
+.masculineBackground {
+background: rgb(186,205,255);
+background: linear-gradient(4deg, rgba(186,205,255,1) 0%, rgba(223,234,255,1) 70%, rgba(255,255,255,1) 100%);
+
+}
+
+/*Pink background for feminine nouns */
+.feminineBackground {
+ background: rgb(206,31,106);
+}
+   
+/*orange background for adjectives and adverbs */
+.adjectiveBackground{
+background: rgb(253,255,186);
+}
+
+/*green background for verbs */
+.verbBackground{
+background: rgb(206,255,186);
+background: linear-gradient(4deg, rgba(206,255,186,1) 0%, rgba(228,255,223,1) 70%, rgba(255,255,255,1) 100%);
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  max-height: 250px;
+  border:5px solid #000;
+  margin-top:20px;
+}
+
+/* Back card's background */
+#container {
+    background-color: white;
+     border:5px solid #777;
+     border-radius:15px;
+    margin-top:30px;
+}
+
+/* front card's background (for listining and writing) */
+.frontContainer{
+  background-color: #2f3236;
+  border:5px solid #777;
+  border-radius:15px;
+  margin-top:20%;
+  padding:50px;
+  display: block;
+  position: relative;
+}
+
+/* front card's background (for reading  and recall) */
+.frontContainerLight{
+  background-color: #fff;
+  border:5px solid #777;
+  border-radius:15px;
+   margin-top:20%;
+  padding:50px;
+  display: block;
+  position: relative;
+}
+
+/*higligting for the part of speach*/
+.typeSpan{
+ background-color: rgba(229, 235, 111, 0.69);
+padding:4px;
+}
+
+.feminineImageContainer{
+ background-color: rgba(188,27,92,0.7);
+padding-bottom:15px;
+}
+
+.masculineImageContainer{
+ background-color: #2C6C8E;
+padding-bottom:15px;
+}
+
+.adjectiveImageContainer{
+ background-color: #E56B3F;
+padding-bottom:15px;
+}
+
+.verbImgContainer{
+ background-color: #0AA09D;
+padding-bottom:15px;
+}
+
+.defimgcontainer{
+ background-color: #000;
+padding-bottom:15px;
+}
+
+
+/*Small replay  button on the back  card*/
+.button .replaybutton span svg {
+  fill: #fff;
+background-color:#424241;
+border-radius:35px;
+font-size:40px;
+}
+
+/*Large replay  button on the front card*/
+
+.button1 .replaybutton span svg {
+  fill: #424241;
+background-color:#fff;
+border-radius:85px;
+font-size:200px;
+}
+
+##BACK TEMPLATE
+
+<script>
+if ("{{type}}".trim() == "feminine noun") {
+	document.getElementById("container").className = " feminineBackground";
+	document.getElementById("imgcontainer").className = "feminineImageContainer";
+	if ( document.getElementsByTagName("img")[0] != null){
+ 	 document.getElementsByTagName("img")[0].style.border="5px solid #8a5473";
+	document.getElementsByClassName("partOfSpeach")[0].style.color="#c98c36";
+	}
+ 	 
+} 
+else if ("{{type}}".trim() == "masculine noun") {
+document.getElementById("container").className = " masculineBackground";
+document.getElementById("imgcontainer").className = " masculineImageContainer";
+	if ( document.getElementsByTagName("img")[0] != null){
+  document.getElementsByTagName("img")[0].style.border="5px solid #3d6287";
+document.getElementsByClassName("partOfSpeach")[0].style.color="#05224a";
+	}
+
+}
+else if ("{{type}}".trim() == "adjective" || " {{type}}".trim() == "adverb") {
+	document.getElementById("container").className = " adjectiveBackground";
+	document.getElementById("imgcontainer").className = " adjectiveImageContainer";
+	if ( document.getElementsByTagName("img")[0] != null){
+ 	 document.getElementsByTagName("img")[0].style.border="5px solid #fcba03";
+	document.getElementsByClassName("partOfSpeach")[0].style.color="#fcba03";
+	}
+ 	 
+} 
+else if ("{{type}}".trim() == "transitive verb" || "{{type}}".trim() == "intransitive verb") { 
+document.getElementById("container").className = " verbBackground";
+document.getElementById("imgcontainer").className = " verbImgContainer";
+	if ( document.getElementsByTagName("img")[0] != null){
+	 document.getElementsByTagName("img")[0].style.border="5px solid #28522d";
+	document.getElementsByClassName("partOfSpeach")[0].style.color="#28522d";
+
+	}
+}
+
+else if ("{{type}}".trim() == "masculine and feminine noun" || "{{type}}".trim() == "masculine noun/feminine noun" || "{{type}}".trim() == "number") { 
+document.getElementById("imgcontainer").className = " defimgcontainer";
+}
+
+
+</script>
+
+
+<div id="container">
+
+
+<div id="imgcontainer"><img src={{picture}}</div>
+<div class="word">{{word}}</div>
+<div class="partOfSpeach boldClass"> <span class="typeSpan">[ {{type}} ] </span> </div>
+<div class= "translation boldClass" >
+<img  style="width:15px; heigh:auto;border:0px ; margin-right:4px" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-fuF3RU2W4a8%2FTeT43Veb7WI%2FAAAAAAAABHw%2FthlzBbdGUuw%2Fs1600%2FWallpapers%2BGraphics%2BFlag%2Bof%2BItaly.png&f=1&nofb=1">
+{{translation}}
+</div>
+
+<hr>
+
+<div class="examples boldClass">{{italian example}} </div>
+<hr>
+<div class="examples boldClass">{{english example}}</div>
+<hr>
+<div/>
+
+<div style="font-family: Comic Sans MS;color:grey ;font-size:15px; background-color:#424241;"> {{Tags}} <div>
